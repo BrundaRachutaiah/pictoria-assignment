@@ -521,49 +521,49 @@ describe("getSearchHistory function testing", () => {
 
 describe("validateUserQueryParams function testing", () => {
     it("should return an error if the username is missing", () => {
-        const query = { email: "valid@example.com" }; // Missing username
+        const query = { email: "valid@example.com" }; 
         const result = validateUserQueryParams(query);
         expect(result.statusCode).toEqual(400)
         expect(result.error).toEqual(["Username is required and should be string."]);
     });
 
     it("should return an error if the username is not a string", () => {
-        const query = { username: 123, email: "valid@example.com" }; // Invalid username type
+        const query = { username: 123, email: "valid@example.com" }; 
         const result = validateUserQueryParams(query);
         expect(result.statusCode).toEqual(400)
         expect(result.error).toEqual(["Username is required and should be string."]);
     });
 
     it("should return an error if the email is missing", () => {
-        const query = { username: "validUser" }; // Missing email
+        const query = { username: "validUser" }; 
         const result = validateUserQueryParams(query);
         expect(result.statusCode).toEqual(400)
         expect(result.error).toEqual(["email is require and should be string."]);
     });
 
     it("should return an error if the email is not a string", () => {
-        const query = { username: "validUser", email: 12345 }; // Invalid email type
+        const query = { username: "validUser", email: 12345 }; 
         const result = validateUserQueryParams(query);
         expect(result.statusCode).toEqual(400)
         expect(result.error).toEqual(["email is require and should be string."]);
     });
 
     it("should return an error if the email does not contain '@'", () => {
-        const query = { username: "validUser", email: "invalid-email.com" }; // Missing '@'
+        const query = { username: "validUser", email: "invalid-email.com" };
         const result = validateUserQueryParams(query);
         expect(result.statusCode).toEqual(400)
         expect(result.error).toEqual(["email is require and should be string."]);
     });
 
     it("should return an error if the email does not contain '.'", () => {
-        const query = { username: "validUser", email: "invalid@email" }; // Missing '.'
+        const query = { username: "validUser", email: "invalid@email" };
         const result = validateUserQueryParams(query);
         expect(result.statusCode).toEqual(400)
         expect(result.error).toEqual(["email is require and should be string."]);
     });
 
     it("should return both username and email errors if both are invalid", () => {
-        const query = { username: 123, email: "invalid-email.com" }; // Both invalid
+        const query = { username: 123, email: "invalid-email.com" }; 
         const result = validateUserQueryParams(query);
         expect(result.statusCode).toEqual(400)
         expect(result).toEqual(["Username is required and should be string."]);
@@ -571,9 +571,9 @@ describe("validateUserQueryParams function testing", () => {
     });
 
     it("should return an empty array if both username and email are valid", () => {
-        const query = { username: "validUser", email: "valid@example.com" }; // Valid input
+        const query = { username: "validUser", email: "valid@example.com" }; 
         const result = validateUserQueryParams(query);
-        expect(result.error).toEqual([]); // No errors
+        expect(result.error).toEqual([]); 
     });
 });
 
